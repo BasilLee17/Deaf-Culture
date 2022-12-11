@@ -1,0 +1,156 @@
+*{
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+.game{
+    width: 1000px;
+    height: 500px;
+    border: 5px solid black;
+    border-radius: 25px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #8CB3EE;
+}
+#ground{
+    width: 1000px;
+    height: 100px;
+    position: absolute;
+    top: 400px;
+    background-color: #527B52;
+    z-index: 11;
+}
+#character{
+    width: 52px;
+    position:absolute;
+    top: 284px;
+    left: 300px;
+    z-index: 10;
+}
+#banner{
+    height: 400px;
+    width: 4000px;
+    position: absolute;
+    left: 150px;
+    top: 15px;
+}
+#house{
+    z-index: 1;
+}
+#house-front{
+    position: absolute;
+    top: 169px;
+    left: 34px;
+    z-index: 11;
+}
+#left-light{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 218px;
+    left: 240px;
+    background-color: white;
+    border-radius: 12.5px;
+}
+#right-light{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 218px;
+    left: 610px;
+    background-color: white;
+    border-radius: 12.5px;
+}
+#sara{
+    position:absolute;
+    top: 270px;
+    left: 915px;
+    z-index: 10;
+}
+#truck{
+    position: absolute;
+    top:219px;
+    left: 1050px;
+}
+#cafe{
+    position: absolute;
+    left: 1600px;
+    top: 86px;
+}
+#school{
+    position: absolute;
+    left: 2900px;
+    top: 39px;
+    z-index: 1;
+}
+#school-front{
+    position: absolute;
+    left: 3012px;
+    top: 244px;
+    z-index: 11;
+}
+
+p{
+    text-align: center;
+}
+#popup{
+    display: block;
+    position: absolute;
+    border: 5px solid black;
+    border-radius: 20px;
+    background-color: white;
+    left: 50%;
+    top: 30%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    font-size: 24px;
+    padding: 20px;
+    text-align: center;
+}
+
+/** 
+* Adapted Quizlib Style
+*/
+
+#quiz-div{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: white;
+    z-index: 21;
+    padding: 40px;
+    padding-left: 80px;
+    font-size: 20px;
+}
+
+.quizlib-question {
+    margin-bottom: 1em;
+}
+
+.quizlib-question-title {
+    display: block;
+}
+
+.quizlib-question-answers ul {
+    list-style: none;
+}
+
+.quizlib-question-warning {
+    color: #f44336;
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+}
+
+.quizlib-correct {
+    color: #4caf50;
+}
+
+.quizlib-incorrect {
+    color: #f44336;
+}
