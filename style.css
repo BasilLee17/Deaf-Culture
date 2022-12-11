@@ -126,7 +126,7 @@ h1{
     position: absolute;
     width: 100% - 160px;
     height: 100%;
-    display: block;
+    display: none;
     background-color: white;
     z-index: 21;
     padding: 40px;
