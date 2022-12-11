@@ -4,8 +4,12 @@ var sara = document.getElementById("sara");
 var truck = document.getElementById("truck");
 var popup = document.getElementById("popup");
 var intro = true;
+
+//keeps track of what text is next to be displayed
 var currentTextIndex = 0;
-var popups = [{text: "Huh, the lights are flashing. Hold the right arrow key to go investigate.", x: "start"},
+
+//contains the text and position of the banner to show the text for all popups
+var popups = [{text: "Huh, the lights are flashing. Tap enter to close text boxes, and hold the right arrow key to go investigate.", x: "start"},
               {text: "Someone is at the door! Let's go say hi to them.", x: 0},
               {text: "It's your friend Sara here for a ride to work. She is an interpreter who works at the same school as you.", x: -560},
               {text: "You: Hi Sara!", x: -560},
@@ -17,16 +21,24 @@ var popups = [{text: "Huh, the lights are flashing. Hold the right arrow key to 
               {text: "You get your drinks and exit the drive thru.", x: -1760},
               {text: "Sara: The baristas were complaining to each other that you should learn to lipread and speak.", x: -2200},
               {text: "You: Ugh, why are people so uniformed", x: -2200},
-              {text: "Some parents of a prospective student to your ASL class have come before school for a meeting with you. Sara comes in to interpret.", x: -2950},
-              {text: "Parents: We were told we should put our little Charlie in ASL classes, but he has a cochlear implant so he does not need ASL to communicate.", x: -2950},
-              {text: "You: Cochlear implants actually don't fully restore hearing so he is still hard of hearing.", x: -2950},
-              {text: "Parents: We are worried about Jimmy abandoning English if he learns ASL.", x: -2950},
-              {text: "You: Actually, early exposure to ASL supports better vocabulary and reading skills compared to hearing peers learning only English.", x: -2950},
-              {text: "Parents: Thank you for your help!", x: -2950},
+              {text: "Some parents of a prospective student to your ASL class have come before school for a meeting with you. Sara comes in to interpret.", x: -2960},
+              {text: "Parents: We were told we should put our little Charlie in ASL classes, but he has a cochlear implant so he does not need ASL to communicate.", x: -2960},
+              {text: "You: Cochlear implants actually don't fully restore hearing so he is still hard of hearing.", x: -2960},
+              {text: "Parents: We are worried about Jimmy abandoning English if he learns ASL.", x: -2960},
+              {text: "You: Actually, early exposure to ASL supports better vocabulary and reading skills compared to hearing peers learning only English.", x: -2960},
+              {text: "Parents: Thank you for your help!", x: -2960},
               {text: "Not shown", x: "never"},];
+
+//true if text is being shown
 var showingText = true;
+
+//true if the user has clicked enter
 var canContinue = false;
+
+//false before characters are in truck, true if characters are in truck, "done" if characters have exited truck
 var inTruck = false;
+
+//true if Sara is traveling with the character
 var withSara = false;
 
 document.onkeydown = checkKey;
@@ -69,6 +81,7 @@ function flashLights() {
 
 function checkKey(e) {
     e = e || window.event;
+	//right arrow key press
     if (e.keyCode == '39' && !showingText) {
         if(popups[currentTextIndex].x != popups[currentTextIndex - 1].text){
             banner.style.left = (parseInt(window.getComputedStyle(banner).getPropertyValue("left")) - 10) + "px";
@@ -79,6 +92,7 @@ function checkKey(e) {
             nextText();
         }
     }
+	//enter key press
     if (e.keyCode == '13' && showingText && !intro) {
         popup.style.display = "none";
         showingText = false;
@@ -495,19 +509,22 @@ Utils.compare = function(obj1, obj2) {
 	return obj1 === obj2;
 };
 
+/**
+ * This is the implementation of the above library
+ */
+
 var quiz = new Quiz('quiz-div', ['b', ['a', 'b', 'd'], 'b', ['a', 'b'], ['b', 'c']]);
 
 function myAnswerCheckMethod() {
-    // checkAnswers returns true if all questions have been answered and updates the result object
-    if (quiz.checkAnswers()) {
-        console.log('Correct answers: ' + quiz.result.score + '/' + quiz.result.totalQuestions);
-        console.log('Percent correct: ' + quiz.result.scorePercentFormatted + '%');
+    if (!quiz.checkAnswers()) {
+		quiz.checkAnswers(false);
     }
-        
-    // Alternatively, we can ignore unanswered questions by passing false
-    quiz.checkAnswers(false);
-    console.log('Correct answers: ' + quiz.result.score + '/' + quiz.result.totalQuestions);
-    console.log('Percent correct: ' + quiz.result.scorePercentFormatted + '%');
+	let answers = document.getElementsByClassName('answer')
+	for (let i = 0; i<answers.length; i++) {
+		answers[i].style.display = "block";
+	}
+	document.getElementById("percent").style.display = "block";
+	document.getElementById("percent").innerText = ('Percent correct: ' + quiz.result.scorePercentFormatted + '%')
 
     // We can also use the highResults method to highlight correct and incorrect answers.
     // We pass a callback which takes the quiz object, the current question, the question number and whether it was answered correctly.

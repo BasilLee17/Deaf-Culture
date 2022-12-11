@@ -117,15 +117,21 @@ p{
 * Adapted Quizlib Style
 */
 
+h1{
+    font-size: 30px;
+    text-align: center;
+}
+
 #quiz-div{
     position: absolute;
-    width: 100%;
+    width: 100% - 160px;
     height: 100%;
-    display: block;
+    display: none;
     background-color: white;
     z-index: 21;
     padding: 40px;
     padding-left: 80px;
+    padding-right: 80px;
     font-size: 20px;
 }
 
@@ -153,4 +159,14 @@ p{
 
 .quizlib-incorrect {
     color: #f44336;
+}
+
+.answer {
+    padding-top: 10px;
+    text-align: left;
+    display: none;
+}
+
+#percent {
+    display: none;
 }
